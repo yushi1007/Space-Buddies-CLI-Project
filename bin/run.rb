@@ -1,4 +1,4 @@
 require_relative '../config/environment'
 
-app = spaceBuddies.new
+app = Interface.new
 app.run

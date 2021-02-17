@@ -28,7 +28,7 @@ unknown = Breed.create(name: "Unknown")
 
 ###### PET ######
 
-k9 = Pet.create(name: "K9", breed_id: 1, bio: "Professor Frederick Marius, who invented the first K9 in the year 5000 while working on the asteroid K4067, described him as my best friend and constant companion.") 
+k9 = Pet.create(name: "K9", breed_id: 1, bio: "Professor Frederick Marius, who invented the first K9 in the year 5000 while working on the asteroid K4067, described him as 'my best friend and constant companion'.") 
 
 dog_the_robot = Pet.create(name: "Dog the Robot", breed_id: 1, bio: "Number one go-to robotic buddy who helps when your path is blocked by other dimensional beings or just wants to play fetch with your grav gun.") 
 

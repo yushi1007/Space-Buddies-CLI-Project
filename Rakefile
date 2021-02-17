@@ -12,8 +12,8 @@ end
 
 desc "start our app"
 task :start do
-  app = spaceBuddies.new
-  app.run
+  interface = Interface.new
+  interface.welcome
 end
 
 namespace :remind_me_about do
