@@ -1,12 +1,12 @@
 # THIS SEED FILE NEEDS TO BE ENTIRELY REPLACED -- I'M LEAVING CODE FOR YOUR REFERENCE ONLY!
 
 User.destroy_all
-UserPet.destroy_all
+UserBreed.destroy_all
 Pet.destroy_all
 Breed.destroy_all
 
 User.reset_pk_sequence
-UserPet.reset_pk_sequence
+UserBreed.reset_pk_sequence
 Pet.reset_pk_sequence
 Breed.reset_pk_sequence
 
@@ -56,15 +56,15 @@ slimer = Pet.create(name: "Slimer", breed_id: 4, bio: "A green ghost that terror
 
 error = Pet.create(name: "Error", breed_id: 5, bio: "Unknown")
 
-###### USERPET ######
+###### USERBREED ######
 
-UserPet.create(user_id: 5, pet_id: 1)
-UserPet.create(user_id: 2, pet_id: 6)
-UserPet.create(user_id: 3, pet_id: 5)
-UserPet.create(user_id: 4, pet_id: 7)
-UserPet.create(user_id: 1, pet_id: 2)
+UserBreed.create(user_id: 5, breed_id: 1)
+UserBreed.create(user_id: 2, breed_id: 3)
+UserBreed.create(user_id: 3, breed_id: 5)
+UserBreed.create(user_id: 4, breed_id: 1)
+UserBreed.create(user_id: 1, breed_id: 2)
 
-puts "💫☆✪☆☆⚛︎✰✰✴︎💫"
+puts "💫☆✪.。.:*・°☆.。.:*・°"
 
 
 

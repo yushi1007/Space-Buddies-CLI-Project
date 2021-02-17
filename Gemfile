@@ -12,3 +12,4 @@ gem "faker"
 gem "tty-prompt"
 
 gem "colorize"
+gem "lolcat"
