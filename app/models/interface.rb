@@ -14,13 +14,17 @@ class Interface
     sleep (1.5)
     Logo.go
     sleep(2)
-    puts "Welcome to Space Buddies🌟".colorize(:blue)
+    puts "Welcome to Space Buddies 🌟".colorize(:green)
+    sleep(0.5)
+    puts "the space pet encyclopedia...".colorize(:yellow)
+    sleep(0.5)
+    puts "let's meet some intergalactic friends! (っ´ω`c)♡".colorize(:cyan)
     sleep(0.5)
     log_in
   end
 
   def log_in
-    prompt.select("do you wanna meet some space buddies???") do |menu|
+    prompt.select("yay") do |menu|
       menu.choice "log in", -> {log_in_helper}
       menu.choice "sign up", -> {sign_up_helper}
       menu.choice "exit", -> {exit_helper}
@@ -36,7 +40,7 @@ class Interface
       stop_music
       breed_page 
     else
-      puts "oops! wrong username or password! the space buddies are waiting for you 🪲".colorize(:red).on_blue.underline
+      puts "oops! wrong username or password! the space buddies are waiting for you 🪲".colorize(:green)
       sleep(1)
       log_in
   end
@@ -52,14 +56,16 @@ end
 password = prompt.ask("enter secret code")
 self.user = User.create(name: name, password: password)
 sleep(2)
+stop_music
 breed_page_new
 end
 
 def exit_helper
   system 'clear'
   puts "may the wind under your wings bear you where the sun sails and the moon walks..."
-  sleep(3)
   stop_music
+  sleep(3)
+  play_music
   Logo.go  
   sleep(2)
 end
@@ -121,7 +127,7 @@ def delete_account
   system 'clear'
     current_user = User.find(self.user.id)
     current_user.delete
-    puts "your account has been deleted rip </3".colorize(:red).on_blue.underline
+    puts "your account has been deleted rip </3".colorize(:blue)
     sleep(3)
     welcome
 end
