@@ -62,10 +62,10 @@ end
 
 def breed_page
     prompt.select("which kind of breed do you want to meet?") do |menu|
-        menu.choice "Robot".colorize(:blue), -> {change_user_breed(1)}
+        menu.choice "Robot".colorize(:red), -> {change_user_breed(1)}
         menu.choice "Fluffy".colorize(:light_blue), -> {change_user_breed(2)}
         menu.choice "Buggy".colorize(:green), -> {change_user_breed(3)}
-        menu.choice "Ghost".colorize(:green), -> {change_user_breed(4)}
+        menu.choice "Ghost".colorize(:yellow), -> {change_user_breed(4)}
         menu.choice "Unknown".colorize(:magenta), -> {unknown_helper}
     end
 end
