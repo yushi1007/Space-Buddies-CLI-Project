@@ -51,8 +51,8 @@ def sign_up_helper
 end
 password = prompt.ask("enter secret code")
 self.user = User.create(name: name, password: password)
-sleep(3)
-breed_page
+sleep(2)
+breed_page_new
 end
 
 def exit_helper
@@ -75,10 +75,27 @@ def breed_page
     end
 end
 
+def breed_page_new 
+  system 'clear'
+    prompt.select("which kind of breed do you want to meet?") do |menu|
+        menu.choice "Robot".colorize(:red), -> {set_user_breed(1)}
+        menu.choice "Fluffy".colorize(:light_blue), -> {set_user_breed(2)}
+        menu.choice "Buggy".colorize(:green), -> {set_user_breed(3)}
+        menu.choice "Ghost".colorize(:yellow), -> {set_user_breed(4)}
+        menu.choice "Unknown".blue.on_red.blink, -> {unknown_helper_new}
+    end
+end
+
 def change_user_breed(breed)
   system 'clear'
   # binding.pry
   self.user.user_breeds.first.update(breed_id: breed)
+  main_menu
+end
+
+def set_user_breed(breed)
+  system 'clear'
+  UserBreed.create(user_id: self.user.id, breed_id: breed)
   main_menu
 end
 
@@ -136,6 +153,22 @@ def random_pet
 end 
 
 def unknown_helper
+  system 'clear'
+  puts ".......oooOoOoOooo............".colorize(:red)
+  sleep(2)
+  puts "...no one knows who this pet is......".colorize(:red)
+  sleep(2)
+  puts "....perhaps they'll reveal themselves one day....".colorize(:red)
+  sleep(2)
+  puts ".................we can only hope.....................".colorize(:red).on_blue.underline
+  sleep(4)
+  prompt.select(" Select from options") do |menu|
+    menu.choice "i want to meet another pet", -> {see_pets}
+    menu.choice "go back to main menu", -> {main_menu}
+  end
+end
+
+def unknown_helper_new
   system 'clear'
   puts ".......oooOoOoOooo............".colorize(:red)
   sleep(2)
