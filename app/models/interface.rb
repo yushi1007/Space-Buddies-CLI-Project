@@ -18,7 +18,7 @@ class Interface
     sleep(0.5)
     puts "the space pet encyclopedia...".colorize(:yellow)
     sleep(0.5)
-    puts "let's meet some intergalactic friends! (っ´ω`c)♡".colorize(:cyan)
+    puts "c'mon, let's meet some friends! (っ´ω`c)♡".colorize(:cyan)
     sleep(0.5)
     log_in
   end
