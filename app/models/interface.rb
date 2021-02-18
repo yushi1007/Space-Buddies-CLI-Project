@@ -56,7 +56,8 @@ def exit_helper
   system 'clear'
   puts "may the wind under your wings bear you where the sun sails and the moon walks..."
   sleep(3)
-  log_in  
+  # log_in
+  Logo.go  
 end
 
 def breed_page
