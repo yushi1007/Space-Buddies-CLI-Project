@@ -10,7 +10,8 @@ class Interface
   end
 
   def welcome
-    system 'clear'
+    play_music
+    sleep (1.5)
     Logo.go
     sleep(2)
     puts "Welcome to Space Buddies🌟".colorize(:blue)
@@ -32,9 +33,10 @@ class Interface
     if User.find_by(name: name, password: password)
       self.user = User.find_by(name: name, password: password)
       puts "yay we're so glad you're back!! #{self.user.name} weeee!"
+      stop_music
       breed_page 
     else
-      puts "oops! wrong username or password! the space buddies are waiting for you 🪲"
+      puts "oops! wrong username or password! the space buddies are waiting for you 🪲".colorize(:red).on_blue.underline
       sleep(1)
       log_in
   end
@@ -49,6 +51,7 @@ def sign_up_helper
 end
 password = prompt.ask("enter secret code")
 self.user = User.create(name: name, password: password)
+sleep(3)
 breed_page
 end
 
@@ -56,17 +59,19 @@ def exit_helper
   system 'clear'
   puts "may the wind under your wings bear you where the sun sails and the moon walks..."
   sleep(3)
-  # log_in
+  stop_music
   Logo.go  
+  sleep(2)
 end
 
 def breed_page
+  system 'clear'
     prompt.select("which kind of breed do you want to meet?") do |menu|
         menu.choice "Robot".colorize(:red), -> {change_user_breed(1)}
         menu.choice "Fluffy".colorize(:light_blue), -> {change_user_breed(2)}
         menu.choice "Buggy".colorize(:green), -> {change_user_breed(3)}
         menu.choice "Ghost".colorize(:yellow), -> {change_user_breed(4)}
-        menu.choice "Unknown".colorize(:magenta), -> {unknown_helper}
+        menu.choice "Unknown".blue.on_red.blink, -> {unknown_helper}
     end
 end
 
@@ -99,7 +104,7 @@ def delete_account
   system 'clear'
     current_user = User.find(self.user.id)
     current_user.delete
-    puts "your account has been deleted rip </3"
+    puts "your account has been deleted rip </3".colorize(:red).on_blue.underline
     sleep(3)
     welcome
 end
@@ -131,14 +136,15 @@ def random_pet
 end 
 
 def unknown_helper
-  puts ".....oooOoOoOooo.......".colorize(:red)
+  system 'clear'
+  puts ".......oooOoOoOooo............".colorize(:red)
   sleep(2)
   puts "...no one knows who this pet is......".colorize(:red)
   sleep(2)
   puts "....perhaps they'll reveal themselves one day....".colorize(:red)
   sleep(2)
-  puts ".................we can only hope.....................".colorize(:red)
-  sleep(2.5)
+  puts ".................we can only hope.....................".colorize(:red).on_blue.underline
+  sleep(4)
   prompt.select(" Select from options") do |menu|
     menu.choice "i want to meet another pet", -> {see_pets}
     menu.choice "go back to main menu", -> {main_menu}
@@ -146,8 +152,16 @@ def unknown_helper
 end
 
 private
+
+
+def play_music
+  pid = fork{exec 'afplay', "internet lullaby.mp3"}
+end
+
+def stop_music
+  pid = fork{system 'killall', 'afplay'}
+end
                                                                                                                 
-                                                                                                                                        
-                                                                                                                                        
+                                                                                                                                                                                                                                                                          
   
 end
